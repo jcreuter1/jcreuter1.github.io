@@ -3,40 +3,62 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>3x3 Table with Sum</title>
+  <title>Interactive 3x3 Table with Sum</title>
+  <style>
+    table {
+      border-collapse: collapse;
+    }
+    td {
+      border: 1px solid #000;
+      padding: 10px;
+      text-align: center;
+    }
+    input {
+      width: 50px;
+      text-align: center;
+    }
+    button {
+      margin-top: 10px;
+    }
+  </style>
   <script>
-    function generateTable() {
-      const values = [
-        [1, 2, 3],
-        [4, 5, 6],
-        [7, 8, 9]
-      ];
-
-      let table = document.getElementById("table");
+    function calculateSum() {
       let sum = 0;
-
-      values.forEach(row => {
-        let tr = document.createElement("tr");
-        row.forEach(value => {
-          let td = document.createElement("td");
-          td.textContent = value;
-          tr.appendChild(td);
-          sum += value;
-        });
-        table.appendChild(tr);
+      // Loop through all inputs to get their values and calculate the sum
+      document.querySelectorAll(".table-input").forEach(input => {
+        const value = parseFloat(input.value) || 0; // Default to 0 if empty or invalid
+        sum += value;
       });
-
+      // Display the sum
       document.getElementById("sum").textContent = "Total Sum: " + sum;
     }
   </script>
 </head>
-<body onload="generateTable()">
+<body>
 
-  <h1>3x3 Table with JavaScript</h1>
+  <h1>Interactive 3x3 Table</h1>
+  <table>
+    <tbody>
+      <!-- Create a 3x3 grid with input elements -->
+      <tr>
+        <td><input type="number" class="table-input" onchange="calculateSum()"></td>
+        <td><input type="number" class="table-input" onchange="calculateSum()"></td>
+        <td><input type="number" class="table-input" onchange="calculateSum()"></td>
+      </tr>
+      <tr>
+        <td><input type="number" class="table-input" onchange="calculateSum()"></td>
+        <td><input type="number" class="table-input" onchange="calculateSum()"></td>
+        <td><input type="number" class="table-input" onchange="calculateSum()"></td>
+      </tr>
+      <tr>
+        <td><input type="number" class="table-input" onchange="calculateSum()"></td>
+        <td><input type="number" class="table-input" onchange="calculateSum()"></td>
+        <td><input type="number" class="table-input" onchange="calculateSum()"></td>
+      </tr>
+    </tbody>
+  </table>
 
-  <table id="table" border="1" cellpadding="10" cellspacing="0"></table>
-  <h2 id="sum"></h2>
+  <h2 id="sum">Total Sum: 0</h2>
 
 </body>
-  
 </html>
