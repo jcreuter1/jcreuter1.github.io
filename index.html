@@ -3,34 +3,39 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>3x3 Table Example</title>
+  <title>3x3 Table with Sum</title>
+  <script>
+    function generateTable() {
+      const values = [
+        [1, 2, 3],
+        [4, 5, 6],
+        [7, 8, 9]
+      ];
+
+      let table = document.getElementById("table");
+      let sum = 0;
+
+      values.forEach(row => {
+        let tr = document.createElement("tr");
+        row.forEach(value => {
+          let td = document.createElement("td");
+          td.textContent = value;
+          tr.appendChild(td);
+          sum += value;
+        });
+        table.appendChild(tr);
+      });
+
+      document.getElementById("sum").textContent = "Total Sum: " + sum;
+    }
+  </script>
 </head>
-<body>
+<body onload="generateTable()">
 
-  <h1>3x3 Table with Values</h1>
+  <h1>3x3 Table with JavaScript</h1>
 
-  <table border="1" cellpadding="10" cellspacing="0">
-    <tr>
-      <th>Header 1</th>
-      <th>Header 2</th>
-      <th>Header 3</th>
-    </tr>
-    <tr>
-      <td>Value 1</td>
-      <td>Value 2</td>
-      <td>Value 3</td>
-    </tr>
-    <tr>
-      <td>Value 4</td>
-      <td>Value 5</td>
-      <td>Value 6</td>
-    </tr>
-    <tr>
-      <td>Value 7</td>
-      <td>Value 8</td>
-      <td>Value 9</td>
-    </tr>
-  </table>
+  <table id="table" border="1" cellpadding="10" cellspacing="0"></table>
+  <h2 id="sum"></h2>
 
 </body>
 </html>
